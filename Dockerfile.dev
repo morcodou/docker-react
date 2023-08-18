@@ -1,0 +1,13 @@
+# Use an existing docker image
+FROM node:alpine
+
+# Install dependencies
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install --silent
+RUN npm install react-scripts -g --silent
+
+COPY ./ ./
+
+# Start the image as
+CMD [ "npm", "run", "start" ]
